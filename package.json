@@ -1,5 +1,5 @@
 {
-  "name": "@loskir/styled-qr-code-node",
+  "name": "@ronnieacs/styled-qr-code-node",
   "version": "1.5.1",
   "description": "Add a style and an image to your QR code",
   "files": [
@@ -16,10 +16,11 @@
     }
   },
   "dependencies": {
-    "qrcode-generator": "^1.4.4",
-    "skia-canvas": "^1.0.0"
+    "canvas": "^2.11.2",
+    "qrcode-generator": "^1.4.4"
   },
   "devDependencies": {
+    "@types/node": "^20.2.5",
     "@typescript-eslint/eslint-plugin": "^5.35.1",
     "@typescript-eslint/parser": "^5.35.1",
     "eslint": "^8.22.0",
@@ -34,7 +35,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/loskir/styled-qr-code.git"
+    "url": "git+https://github.com/ronnieacs/styled-qr-code.git"
   },
   "keywords": [
     "qr",
@@ -53,11 +54,11 @@
     "design"
   ],
   "author": {
-    "name": "Kirill Loskutov",
-    "email": "kl@sinker.ru"
+    "name": "Ronnie Ayala",
+    "email": "ronnie.ayala@outlook.com"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/loskir/styled-qr-code/issues"
+    "url": "https://github.com/ronnieacs/styled-qr-code/issues"
   }
 }

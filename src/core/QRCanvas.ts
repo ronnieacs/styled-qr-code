@@ -7,7 +7,7 @@ import defaultOptions, { RequiredOptions } from './QROptions.js';
 import gradientTypes from '../constants/gradientTypes.js';
 import { QRCode, Gradient, FilterFunction, Options } from '../types';
 import getMode from '../tools/getMode.js';
-import { Canvas, CanvasRenderingContext2D, ExportFormat, RenderOptions, loadImage, Image } from 'skia-canvas';
+import { Canvas, CanvasRenderingContext2D, loadImage, Image } from 'canvas';
 import qrcode from 'qrcode-generator';
 import { promises as fs } from 'fs';
 import mergeDeep from '../tools/merge.js';
@@ -466,24 +466,18 @@ export default class QRCanvas {
 
   /**
    * Create a buffer object with the content of the qr code
-   *
-   * @param format Supported types: "png" | "jpg" | "jpeg" | "pdf" | "svg"
-   * @param options export options see https://github.com/samizdatco/skia-canvas#tobufferformat-page-matte-density-quality-outline
    */
-  async toBuffer(format: ExportFormat = 'png', options?: RenderOptions): Promise<Buffer> {
+  async toBuffer(): Promise<Buffer> {
     await this.created;
-    return this._canvas.toBuffer(format, options);
+    return this._canvas.toBuffer();
   }
 
   /**
    *  Create a data url with the content of the qr code
-   *
-   * @param format Supported types: "png" | "jpg" | "jpeg" | "pdf" | "svg"
-   * @param options export options see https://github.com/samizdatco/skia-canvas#tobufferformat-page-matte-density-quality-outline
    */
-  async toDataUrl(format: ExportFormat = 'png', options?: RenderOptions): Promise<string> {
+  async toDataUrl(): Promise<string> {
     await this.created;
-    return this._canvas.toDataURL(format, options);
+    return this._canvas.toDataURL();
   }
 
   /**
@@ -494,8 +488,8 @@ export default class QRCanvas {
    * @param options export options see https://github.com/samizdatco/skia-canvas#tobufferformat-page-matte-density-quality-outline
    * @returns a promise that resolves once the file was written to disk
    */
-  async toFile(filePath: string, format: ExportFormat = 'png', options?: RenderOptions): Promise<void> {
+  async toFile(filePath: string): Promise<void> {
     await this.created;
-    return fs.writeFile(filePath, await this._canvas.toBuffer(format, options));
+    return await fs.writeFile(filePath, this._canvas.toBuffer());
   }
 }

@@ -49,7 +49,7 @@ export default class QRCanvas {
 
     this._width = mergedOptions.width;
     this._height = mergedOptions.height;
-    this._canvas = new Canvas(this._width, this._height);
+    this._canvas = new Canvas(this._width, this._height, 'svg');
 
     this._options = mergedOptions;
 
